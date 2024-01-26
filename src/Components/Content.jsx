@@ -3,24 +3,7 @@ import '../styles/content.css'
 import { useState } from 'react'
 import { FaTrashAlt } from "react-icons/fa";
 
-const Content = () => {
-    const [items, setItems] = useState([
-        {
-            id:1,
-            checked:true,
-            item: "Learn React"
-        },
-        {
-            id:2,
-            checked:true,
-            item: "Learn WD"
-        },
-        {
-            id:3,
-            checked:false,
-            item: "Learn AI"
-        }
-    ])
+const Content = ({items, setItems}) => {
 
     const handleCheck = (id) => {
         //console.log(id);

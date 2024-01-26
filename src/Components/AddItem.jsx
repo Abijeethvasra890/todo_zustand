@@ -1,8 +1,14 @@
 import React from 'react'
 import '../styles/additem.css'
 import { useState } from 'react'
+import { useStore  } from '../store'
 
-const AddItem = ({itemName, setItemName, itemDesc,setItemDesc, items, setItems}) => {
+const AddItem = () => {
+
+    const { items, setItems } = useStore();
+    const { itemName, setItemName } = useStore();
+    const { itemDesc, setItemDesc } = useStore();
+
    const [addModal, setAddModal] = useState(false)
 
    const openaddItem = () =>{

@@ -4,8 +4,11 @@ import { useState } from 'react'
 import { FaTrashAlt, FaEye, FaEdit } from "react-icons/fa";
 import ViewItem from './ViewItem';
 import EditItem from './EditItem';
+import { useStore } from '../store';
 
-const Content = ({items, setItems}) => {
+const Content = () => {
+
+    const { items, setItems } = useStore();
 
     const [viewModal, setViewModal] = useState(false)
     const [selectedItem, setSelectedItem] = useState(null);

@@ -4,11 +4,15 @@ import AddItem from './Components/AddItem'
 import Content from './Components/Content'
 import Footer from './Components/Footer'
 import Header from './Components/Header'
+import { useStore } from './store'
 
 function App() {
-  const [items, setItems] = useState([])
-  const [itemName, setItemName] = useState("");
-  const [itemDesc, setItemDesc] = useState("");
+  //const [items, setItems] = useState([])
+  const { items, setItems } = useStore();
+  //const [itemName, setItemName] = useState("");
+  //const [itemDesc, setItemDesc] = useState("");
+  const { itemName, setItemName } = useStore();
+  const { itemDesc, setItemDesc } = useStore();
 
   useEffect(() => {
     // Fetch items from localStorage when the component mounts
@@ -19,15 +23,8 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <Content items={items} setItems = {setItems}/>
-      <AddItem  
-        itemName = {itemName} 
-        setItemName={setItemName} 
-        itemDesc = {itemDesc}
-        setItemDesc={setItemDesc}
-        items = {items}
-        setItems = {setItems}
-        />
+      <Content />
+      <AddItem />
       <Footer />
     </div>
   )

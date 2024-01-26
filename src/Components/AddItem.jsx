@@ -3,10 +3,10 @@ import '../styles/additem.css'
 import { useState } from 'react'
 
 const AddItem = ({itemName, setItemName, itemDesc,setItemDesc, items, setItems}) => {
-   const [openModal, setOpenModal] = useState(false)
+   const [addModal, setAddModal] = useState(false)
 
    const openaddItem = () =>{
-        setOpenModal(true);
+        setAddModal(true);
    }
 
    const handleAddTask = () => {
@@ -17,7 +17,7 @@ const AddItem = ({itemName, setItemName, itemDesc,setItemDesc, items, setItems})
         setItems(listItems);
         setItemName("");
         setItemDesc("");
-        setOpenModal(false);
+        setAddModal(false);
         
    }
   // console.log(items);
@@ -26,7 +26,7 @@ const AddItem = ({itemName, setItemName, itemDesc,setItemDesc, items, setItems})
     <div className="floating-button-container">
         <button onClick = {openaddItem} className="floating-button">Add Task +</button>
     </div>
-    {openModal &&
+    {addModal &&
         <div className="modal">
         <h2>Add Task</h2>
         <label>
@@ -44,7 +44,7 @@ const AddItem = ({itemName, setItemName, itemDesc,setItemDesc, items, setItems})
           />
         </label>
         <button onClick={handleAddTask}>Add Task</button>
-        <button onClick={()=>setOpenModal(false)}>Cancel</button>
+        <button onClick={()=>setAddModal(false)}>Cancel</button>
       </div>
         
     }

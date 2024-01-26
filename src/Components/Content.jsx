@@ -1,9 +1,19 @@
 import React from 'react'
 import '../styles/content.css'
 import { useState } from 'react'
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaEye, FaEdit } from "react-icons/fa";
+import ViewItem from './ViewItem';
 
 const Content = ({items, setItems}) => {
+
+    const [viewModal, setViewModal] = useState(false)
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const handleView = (id) => {
+        const selectedItem = items.find((item) => item.id === id);
+        setSelectedItem(selectedItem);
+        setViewModal(true);
+    }
 
     const handleCheck = (id) => {
         //console.log(id);
@@ -22,6 +32,7 @@ const Content = ({items, setItems}) => {
         localStorage.setItem("todo_list", JSON.stringify(listItems))
     }   
 
+
   return (
     <main>
         <ul>
@@ -37,9 +48,23 @@ const Content = ({items, setItems}) => {
                         role='button'
                         onClick={() => handleDelete(item.id)}
                     />
+                    <FaEye 
+                         role='button'
+                         onClick={() => handleView(item.id)}
+                    />
+                    <FaEdit 
+                        role='button'
+                         
+                    />
                 </li>
             ))}
         </ul>
+
+        <ViewItem 
+            viewModal = {viewModal} 
+            setViewModal = {setViewModal} 
+            selectedItem={selectedItem}
+        />
     </main>
   )
 }

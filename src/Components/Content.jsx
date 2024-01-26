@@ -3,12 +3,28 @@ import '../styles/content.css'
 import { useState } from 'react'
 import { FaTrashAlt, FaEye, FaEdit } from "react-icons/fa";
 import ViewItem from './ViewItem';
+import EditItem from './EditItem';
 
 const Content = ({items, setItems}) => {
 
     const [viewModal, setViewModal] = useState(false)
     const [selectedItem, setSelectedItem] = useState(null);
 
+    const [editModal, setEditModal] = useState(false);
+    const [editedItem, setEditedItem] = useState({
+        id: null,
+        item: '',
+        desc: '',
+        checked: false,
+      });
+
+    const handleEdit = (id) => {
+        const selectedItem = items.find((item) => item.id === id);
+        setEditedItem(selectedItem);
+        setEditModal(true);
+    };
+    
+    
     const handleView = (id) => {
         const selectedItem = items.find((item) => item.id === id);
         setSelectedItem(selectedItem);
@@ -54,7 +70,7 @@ const Content = ({items, setItems}) => {
                     />
                     <FaEdit 
                         role='button'
-                         
+                        onClick={() => handleEdit(item.id)}
                     />
                 </li>
             ))}
@@ -64,6 +80,15 @@ const Content = ({items, setItems}) => {
             viewModal = {viewModal} 
             setViewModal = {setViewModal} 
             selectedItem={selectedItem}
+        />
+
+        <EditItem 
+            editModal = {editModal}
+            editedItem = {editedItem}
+            setEditModal = {setEditModal}
+            setItems = {setItems}
+            setEditedItem = {setEditedItem}
+            items = {items}
         />
     </main>
   )

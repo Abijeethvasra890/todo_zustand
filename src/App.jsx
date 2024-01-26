@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import AddItem from './Components/AddItem'
 import Content from './Components/Content'
@@ -9,6 +9,12 @@ function App() {
   const [items, setItems] = useState([])
   const [itemName, setItemName] = useState("");
   const [itemDesc, setItemDesc] = useState("");
+
+  useEffect(() => {
+    // Fetch items from localStorage when the component mounts
+    const storedItems = JSON.parse(localStorage.getItem('todo_list')) || [];
+    setItems(storedItems);
+  }, []); 
 
   return (
     <div className='App'>

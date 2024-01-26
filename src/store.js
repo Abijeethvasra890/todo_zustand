@@ -7,6 +7,10 @@ const store = (set) =>({
     setItemName: (newItemName) => set({ itemName: newItemName }),
     itemDesc: '',
     setItemDesc: (newItemDesc) => set({ itemDesc: newItemDesc }),
+    dueDate: '',
+    setDueDate: (newDueDate) => set({ dueDate: newDueDate }),
+    createdDate: '',
+    setCreatedDate: (newCreatedDate) => set({ createdDate: newCreatedDate }),
  })
 
  export const useStore = create(store);

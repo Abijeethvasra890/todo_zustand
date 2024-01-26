@@ -36,6 +36,14 @@ const EditItem = ({editModal, editedItem, setEditModal, setEditedItem}) => {
               }
             />
           </label>
+          <label>Due Date:</label>
+          <input
+            type="date"
+            value={editedItem.dueDate}
+            onChange={(e) =>
+              setEditedItem({ ...editedItem, dueDate: e.target.value })
+            }
+          />
           <button onClick={handleSaveEdit}>Save</button>
           <button onClick={() => setEditModal(false)}>Cancel</button>
         </div>

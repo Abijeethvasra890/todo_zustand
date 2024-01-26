@@ -9,6 +9,8 @@ import { useStore } from '../store';
 const Content = () => {
 
     const { items, setItems } = useStore();
+    const {dueDate, setDueDate} = useStore();
+    const {createdDate, setCreatedDate} = useStore();
 
     const [viewModal, setViewModal] = useState(false)
     const [selectedItem, setSelectedItem] = useState(null);
@@ -19,6 +21,7 @@ const Content = () => {
         item: '',
         desc: '',
         checked: false,
+        dueDate: '',
       });
 
     const handleEdit = (id) => {

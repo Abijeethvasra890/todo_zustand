@@ -11,6 +11,8 @@ const ViewItem = ({viewModal, setViewModal, selectedItem}) => {
         <p>Name: {selectedItem.item} </p>
         <p>Description: {selectedItem.desc}</p>
         <p>Checked: {selectedItem.checked ? 'Yes' : 'No'}</p>
+        <p>CreatedDate: {selectedItem.createdDate}</p>
+        <p>DueDate: {selectedItem.dueDate}</p>
         <button onClick={() => setViewModal(false)}>Close</button>
         </div>
     }

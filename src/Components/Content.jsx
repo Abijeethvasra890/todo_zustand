@@ -89,9 +89,7 @@ const Content = () => {
             editModal = {editModal}
             editedItem = {editedItem}
             setEditModal = {setEditModal}
-            setItems = {setItems}
             setEditedItem = {setEditedItem}
-            items = {items}
         />
     </main>
   )

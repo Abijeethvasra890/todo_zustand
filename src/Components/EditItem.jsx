@@ -1,6 +1,10 @@
 import React from 'react'
+import { useStore } from '../store';
 
-const EditItem = ({editModal, editedItem, setEditModal, setItems, setEditedItem, items}) => {
+const EditItem = ({editModal, editedItem, setEditModal, setEditedItem}) => {
+
+    const { items, setItems } = useStore();
+
     const handleSaveEdit = () => {
         const updatedItems = items.map((item) =>
           item.id === editedItem.id ? editedItem : item

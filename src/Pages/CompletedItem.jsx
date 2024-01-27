@@ -10,7 +10,7 @@ const CompletedTasks = () => {
 
   return (
     <main>
-      <h1>Completed Tasks</h1>
+      <h3>Completed Tasks</h3>
         <ul>
             {completedTasks.map((item)=> (
                 <li className='item' key={item.id}>

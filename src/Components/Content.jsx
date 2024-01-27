@@ -54,11 +54,34 @@ const Content = () => {
         localStorage.setItem("todo_list", JSON.stringify(listItems))
     }   
 
+    const handleSortByDueDate = () => {
+        const uncompletedTasks = items.filter((task) => !task.checked);
+        // Sort tasks by due date
+        const sortedTasks = [...uncompletedTasks].sort((a, b) => {
+          if (a.dueDate < b.dueDate) return -1;
+          if (a.dueDate > b.dueDate) return 1;
+          return 0;
+        });
+        setItems([...sortedTasks, ...items.filter((task) => task.checked)]);//sets the sorted tasks followed by the completed tasks
+      };
+      
+      const handleSortByPriority = () => {
+        const uncompletedTasks = items.filter((task) => !task.checked);
+    
+          const sortedTasks = [...uncompletedTasks].sort((a, b) => {
+            // Assuming priority is a string like 'P0', 'P1', 'P2'
+            return a.priority.localeCompare(b.priority);
+          });
+    
+        setItems([...sortedTasks, ...items.filter((task) => task.checked)]);
+      };
     const activeTasks = items.filter((task) => !task.checked);
 
   return (
     <main>
-        <h1>All Tasks</h1>
+        <button onClick={handleSortByDueDate}>Sort by Due Date</button>
+        <button onClick={handleSortByPriority}>Sort by Priority</button>
+        <h3>All Tasks</h3>
         <ul>
             {items.map((item)=> (
                 <li className='item' key={item.id}>

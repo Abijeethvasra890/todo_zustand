@@ -10,7 +10,7 @@ const PendingTasks = () => {
 
   return (
     <main>
-      <h1>Pending Tasks</h1>
+      <h3>Pending Tasks</h3>
       <ul>
       {pendingTasks.map((item)=> (
         <li className='item' key={item.id}>

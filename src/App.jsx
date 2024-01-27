@@ -4,8 +4,10 @@ import AddItem from './Components/AddItem'
 import Content from './Components/Content'
 import Footer from './Components/Footer'
 import Header from './Components/Header'
+import CompletedItem from './Pages/CompletedItem'
+import PendingTasks from './Pages/PendingItem'
 import { useStore } from './store'
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   //const [items, setItems] = useState([])
   const { items, setItems } = useStore();
@@ -22,10 +24,17 @@ function App() {
 
   return (
     <div className='App'>
+    <Router>
       <Header />
-      <Content />
+      <Routes>
+        <Route path="/" exact element={<Content/>} />
+        <Route path="/completed" element={<CompletedItem/>} />
+        <Route path="/pending" element={<PendingTasks />} />
+      </Routes>
       <AddItem />
       <Footer />
+    </Router>
+      
     </div>
   )
 }

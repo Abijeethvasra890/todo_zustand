@@ -54,9 +54,11 @@ const Content = () => {
         localStorage.setItem("todo_list", JSON.stringify(listItems))
     }   
 
+    const activeTasks = items.filter((task) => !task.checked);
 
   return (
     <main>
+        <h1>All Tasks</h1>
         <ul>
             {items.map((item)=> (
                 <li className='item' key={item.id}>
@@ -65,7 +67,9 @@ const Content = () => {
                         onChange={() => handleCheck(item.id)}
                         checked = {item.checked}
                     />
-                    <label>{item.item}</label>
+                    <label 
+                        style={(item.checked)? {textDecoration:'line-through'}: null}
+                    >{item.item}</label>
                     <p>{item.priority}</p>
                     <FaTrashAlt 
                         role='button'

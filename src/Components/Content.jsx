@@ -66,6 +66,7 @@ const Content = () => {
                         checked = {item.checked}
                     />
                     <label>{item.item}</label>
+                    <p>{item.priority}</p>
                     <FaTrashAlt 
                         role='button'
                         onClick={() => handleDelete(item.id)}
@@ -78,6 +79,7 @@ const Content = () => {
                         role='button'
                         onClick={() => handleEdit(item.id)}
                     />
+
                 </li>
             ))}
         </ul>

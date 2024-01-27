@@ -11,6 +11,8 @@ const store = (set) =>({
     setDueDate: (newDueDate) => set({ dueDate: newDueDate }),
     createdDate: '',
     setCreatedDate: (newCreatedDate) => set({ createdDate: newCreatedDate }),
+    priority: 'P0',
+    setPriority: (newPriority) => set({ priority: newPriority }),
  })
 
  export const useStore = create(store);

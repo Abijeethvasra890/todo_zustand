@@ -10,6 +10,7 @@ const AddItem = () => {
     const { itemDesc, setItemDesc } = useStore();
     const {dueDate, setDueDate} = useStore();
     const {createdDate, setCreatedDate} = useStore();
+    const {priority, setPriority} = useStore();
 
 
    const [addModal, setAddModal] = useState(false)
@@ -22,7 +23,15 @@ const AddItem = () => {
         //console.log('Adding task:', { itemName, itemDesc });
         const currentDate = new Date().toLocaleDateString('en-US');
         const id = items.length ? items[items.length -1].id+1 : 1
-        const newItem = {id, checked: false, item: itemName, desc: itemDesc, createdDate: currentDate, dueDate: dueDate}
+        const newItem = {
+          id, 
+          checked: false, 
+          item: itemName, 
+          desc: itemDesc,
+          createdDate: currentDate, 
+          dueDate: dueDate,
+          priority: priority
+        }
         const listItems = [...items, newItem];
         setItems(listItems);
         setItemName("");
@@ -61,6 +70,12 @@ const AddItem = () => {
           value={dueDate}
           onChange={(e)=>setDueDate(e.target.value)}
         />
+        <label>Priority:</label>
+        <select id="priority" name="priority" value={priority} onChange={(e)=>setPriority(e.target.value)}>
+          <option value="P0">Priority 0</option>
+          <option value="P1">Priority 1</option>
+          <option value="P2">Priority 2</option>
+        </select>
         <button onClick={handleAddTask}>Add Task</button>
         <button onClick={()=>setAddModal(false)}>Cancel</button>
       </div>

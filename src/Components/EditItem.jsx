@@ -44,6 +44,19 @@ const EditItem = ({editModal, editedItem, setEditModal, setEditedItem}) => {
               setEditedItem({ ...editedItem, dueDate: e.target.value })
             }
           />
+          <label>Priority:</label>
+          <select 
+            id="priority" 
+            name="priority" 
+            value={editedItem.priority} 
+            onChange={
+              (e)=>setEditedItem({ ...editedItem, priority: e.target.value })
+            }>
+            <option value="P0">Priority 0</option>
+            <option value="P1">Priority 1</option>
+            <option value="P2">Priority 2</option>
+          </select>
+
           <button onClick={handleSaveEdit}>Save</button>
           <button onClick={() => setEditModal(false)}>Cancel</button>
         </div>

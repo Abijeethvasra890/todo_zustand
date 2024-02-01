@@ -6,15 +6,6 @@ import { sortByDueDate, sortByPriority } from '../Helpers/sortHelpers';
 const CompletedTasks = () => {
   const { items, setItems } = useStore();
 
-  const handleSortByDueDate = () => {
-    const sortedItems = sortByDueDate(items);
-    setItems(sortedItems);
-  };
-  
-  const handleSortByPriority = () => {
-    const sortedItems = sortByPriority(items);
-    setItems(sortedItems);
-  };
   
 
   // Filter completed tasks
@@ -23,10 +14,7 @@ const CompletedTasks = () => {
   return (
     <main>
       <h3>Completed Tasks</h3>
-      <div>
-        <button onClick={handleSortByDueDate}>Sort by Due Date</button>
-        <button onClick={handleSortByPriority}>Sort by Priority</button>
-      </div>
+     
       {completedTasks.length > 0 ?  (
         <table className="task-table">
           <thead>

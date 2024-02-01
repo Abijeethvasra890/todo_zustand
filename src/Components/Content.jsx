@@ -73,7 +73,7 @@ const Content = () => {
         <button onClick={handleSortByPriority}>Sort by Priority</button>
     </div>
         <ul>
-            {items.map((item)=> (
+            {items.length>0? items.map((item)=> (
                 <li className='item' key={item.id}>
                     <input 
                         type='checkbox'
@@ -98,7 +98,7 @@ const Content = () => {
                     />
 
                 </li>
-            ))}
+            )):<center>No Tasks</center> }
         </ul>
 
         <ViewItem 
